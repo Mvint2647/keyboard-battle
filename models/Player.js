@@ -26,6 +26,9 @@ Player.init(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                isAlphanumeric: true,
+            }
         },
         password: {
             type: DataTypes.STRING,
@@ -52,3 +55,5 @@ Player.init(
         modelName: 'player',
       }
 )
+
+module.exports = Player;

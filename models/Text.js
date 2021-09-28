@@ -13,7 +13,10 @@ Text.init(
         },
         content: { //what the players have to type
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                isAlphanumeric: true,
+            },
         }
     },
     {
@@ -21,6 +24,8 @@ Text.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'player',
+        modelName: 'text',
       }
 )
+
+module.exports = Text;
