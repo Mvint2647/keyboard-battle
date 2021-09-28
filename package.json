@@ -1,0 +1,22 @@
+{
+  "name": "keyboard-battle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jboybokungu/keyboard-battle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jboybokungu/keyboard-battle/issues"
+  },
+  "homepage": "https://github.com/jboybokungu/keyboard-battle#readme"
+}
