@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+
+    <body class="container">
+        <div class="page-header">
+            <h1>Welcome to the Keyboard Battle</h1>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="home-btn">Home</a></li>
+                        <li><a href="dashboard-btn">Dashboard</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">Log Out</a></li>
+                        <li><a href="/login">Log In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <input type="text" placeholder="Player1 please type here" id="player1"/>
+        <input type="text" disabled="disabled" placeholder="Player2 will show here" id="player2"/>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="socketTest.js"></script>
+    </body>
+</html>
