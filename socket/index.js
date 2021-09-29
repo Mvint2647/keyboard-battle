@@ -6,7 +6,7 @@ const connection = (socket) => {
         console.log(data)
         socket.broadcast.emit('p2typed', data);
     });
-} 
+}
 
 
 module.exports = function(server){
