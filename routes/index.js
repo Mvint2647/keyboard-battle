@@ -5,7 +5,7 @@ const path = require('path');
 //router.use('/api', apiRoutes);
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/homepageSOCKETTEST.html'));
+    res.render('homepage');
 });
 
 module.exports = router;
