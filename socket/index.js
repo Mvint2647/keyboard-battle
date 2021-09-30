@@ -3,6 +3,7 @@ const sharedsession = require("express-socket.io-session");
 
 
 //the game logic will be programmed here for now, may eventually be modularized
+//we need to manage the match
 
 const connection = (socket) => {
     console.log('got connection');
@@ -14,14 +15,14 @@ const connection = (socket) => {
         });
     });
     socket.on('type', (data) => {
-        socket.handshake.session.testValue = true;
+        //socket.handshake.session.testValue = true;
         //socket.handshake.session.save();
         console.log(socket.handshake.session);
         socket.broadcast.emit('p2typed', data);
     });
 };
 
-module.exports = function(server, session){
+module.exports = function(server, session){ //initialize socket 
     var io = socket(server)
     io.use(sharedsession(session, {
         autoSave: true
