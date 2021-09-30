@@ -24,21 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-// io.on('connection', (socket) => {
-//     console.log('got connection');
-//     socket.on('type', (data) => {
-//         console.log(data)
-//         socket.broadcast.emit('p2typed', data);
-//     });
-// });
 
 
-<<<<<<< HEAD
+
 sequelize.sync({ force: false }).then(() => {
-    server.listen(PORT, () => console.log('Now listening'));
-=======
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
->>>>>>> 706b4c0 (modified routes and updated server.js)
+  server.listen(PORT, () => console.log('Now listening'));
 });
+
+
 
