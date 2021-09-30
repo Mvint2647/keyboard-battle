@@ -1,9 +1,11 @@
-*{
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-
-
+html,
+body,
 
 .wrapper {
   height: 100%;
@@ -12,38 +14,120 @@
 }
 
 body {
-  font-family: 'Lakki Reddy', cursive;
-  background-image: url("/public/assets/images/unsplash.jpg");
+  font-family:'Lakki Reddy', cursive;
+  background-image:url("loginpage.jpg");
+  background: linear-gradient(black, rgb(1, 62, 87));
   position:relative;
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat:no-repeat; 
   background-attachment: fixed;
-  background-position: center center;
   -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  -moz-background-size: cover; 
+  -o-background-size: cover;  
+  font-size: 30px;
+  display: block;
+  justify-content: center;
+}  
+
+h1{
+  font-size: 70px;
+  padding: 40px;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  color:rgb(141, 56, 0);
+}
+/* ----------KEYFRAMES-------------- */
+body {
   
+  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
+.words {
+  color: #f4d03f;
+  font-size: 0;
+  line-height: 1.5;
+}
 
+.words span {
+  font-size: 5rem;
+  display: inline-block;
+  animation: move 3s ease-in-out infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-30%, 0);
+  }
+  50% {
+    text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    transform: translate(30%, 0);
+  }
+}
+
+.words span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.words span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.words span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.words span:nth-child(5) {
+  animation-delay: 2s;
+}
+
+.words span:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+.words span:nth-child(7) {
+  animation-delay: 3s;
+}
+/* --------------------------------- */
 form {
-  display:flex-block;
+  display:flexbox;
+  align-content: center;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.925);
   justify-content: center;
   border-radius: 10px;
-  border: black 2px solid;
   padding: 10px;
 }
 
 .btn-primary {
-  align-content: center;
+  box-shadow:  rgb(141, 56, 0) 0px 0px 7px 5px;
+  text-align: center;
   margin-top: 10px;
-  background-color: rgb(1, 59, 50);
+  padding:10px;
+  background-color: rgb(141, 56, 0);
   border-radius: 10px;
   border-style: hidden;
-  border: 5px solid rgb(1, 59, 50);
+  color:rgba(0, 0, 0, 0.856);
+  font-size: 20px;
+}
+
+.btn-primary:hover {
+  box-shadow:  rgb(141, 56, 0) 0px 0px 5px 2px;
+  text-align: center;
+  margin-top: 10px;
+  padding:10px;
+  background-color: rgb(141, 56, 0);
+  border-radius: 10px;
+  border-style: hidden;
   color: black;
+  font-size: 20px;
+  color:rgba(255, 255, 255, 0.849);
 }
 
 .logininput {
@@ -51,10 +135,10 @@ form {
   border-style: hidden;
   border: white 0.5px solid;
   border-radius: 10px;
-  color: black;
+  color: rgb(141, 56, 0);
   margin-bottom: 10px; 
+  font-size: 20px;
 }
 label{
-  color:white
-  
+  color:rgb(141, 56, 0);
 }
