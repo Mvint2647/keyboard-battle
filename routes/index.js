@@ -12,4 +12,12 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/test/homepageSOCKETTEST.html'));
 });
 
+router.get('/match',(req, res) => {
+    res.render('matchpage')
+})
+
+router.get('/login',(req, res) => {
+    res.render('login')
+})
+
 module.exports = router;
