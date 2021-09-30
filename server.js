@@ -33,7 +33,12 @@ app.use('/', routes);
 // });
 
 
+<<<<<<< HEAD
 sequelize.sync({ force: false }).then(() => {
     server.listen(PORT, () => console.log('Now listening'));
+=======
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+>>>>>>> 706b4c0 (modified routes and updated server.js)
 });
 

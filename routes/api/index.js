@@ -3,8 +3,8 @@ const matchRoutes = require('./matchRoutes');
 const playerRoutes = require('./playerRoutes');
 const textRoutes = require('./textRoutes');
 
-router.use('/', matchRoutes);
-router.use('/', playerRoutes);
-router.use('/', textRoutes);
+router.use('/match', matchRoutes);
+router.use('/player', playerRoutes);
+router.use('/text', textRoutes);
 
 module.exports = router;
