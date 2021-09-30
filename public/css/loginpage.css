@@ -1,0 +1,60 @@
+*{
+  box-sizing: border-box;
+}
+
+
+
+
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lakki Reddy', cursive;
+  background-image: url("/public/assets/images/unsplash.jpg");
+  position:relative;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  
+}
+
+
+form {
+  display:flex-block;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.925);
+  justify-content: center;
+  border-radius: 10px;
+  border: black 2px solid;
+  padding: 10px;
+}
+
+.btn-primary {
+  align-content: center;
+  margin-top: 10px;
+  background-color: rgb(1, 59, 50);
+  border-radius: 10px;
+  border-style: hidden;
+  border: 5px solid rgb(1, 59, 50);
+  color: black;
+}
+
+.logininput {
+  background-color: rgba(19, 3, 3, 0);
+  border-style: hidden;
+  border: white 0.5px solid;
+  border-radius: 10px;
+  color: black;
+  margin-bottom: 10px; 
+}
+label{
+  color:white
+  
+}
