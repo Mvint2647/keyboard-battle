@@ -39,6 +39,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 8fd76f3970eb276bb0a50d2c8cc640f700b7efd8
 sequelize.sync({ force: false }).then(() => {
-    server.listen(PORT, () => console.log('Now listening'));
+  server.listen(PORT, () => console.log('Now listening'));
 });
+
+
+

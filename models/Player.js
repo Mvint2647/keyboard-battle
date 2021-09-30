@@ -19,16 +19,14 @@ Player.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isEmail: true,
-              }
+            
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isAlphanumeric: true,
-            }
+            // validate: {
+            //     isAlphanumeric: true,
+            // }
         },
         password: {
             type: DataTypes.STRING,
@@ -37,13 +35,13 @@ Player.init(
     },
     {
         hooks: {
-          beforeCreate: async (data) => {
-            data.password = bcrypt.hash(data.password, 10);
+          async beforeCreate (data) {
+            data.password = await bcrypt.hash(data.password, 10);
             return data;
           },
-          beforeUpdate: async (data) => {
+          async beforeUpdate (data) {
             if (data.password) {
-              data.password = bcrypt.hash(data.password, 10);
+              data.password =await bcrypt.hash(data.password, 10);
             }
             return data;
           }
