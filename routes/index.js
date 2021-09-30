@@ -9,11 +9,7 @@ const path = require('path');
 router.use('/test', testRoutes);
 
 router.get('/', (req, res) => {
-<<<<<<< HEAD
     res.sendFile(path.join(__dirname, '../public/test/homepageSOCKETTEST.html'));
-=======
-    res.render('homepage');
->>>>>>> 8fd76f3970eb276bb0a50d2c8cc640f700b7efd8
 });
 
 module.exports = router;
