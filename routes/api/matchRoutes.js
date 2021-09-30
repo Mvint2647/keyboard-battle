@@ -4,3 +4,5 @@ const Match = require('../../models/Match');
 router.get('/', async (req, res) => {
     
 })
+
+module.exports = router;
