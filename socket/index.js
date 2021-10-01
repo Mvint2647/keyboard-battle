@@ -14,16 +14,17 @@ const matchJoin = async (data, socket) => {
             queryID: data
         }
     });
+    //start tracking the match if we aren't already
     if (!matches[requestedMatch.queryID]) {
         matches[requestedMatch.queryID] = {
             player1SID: null,
             player2SID: null
         }
     }
+
     //are they the player who created the match? if not, theyll join as player two if no one else has. otherwise, theyll spectate
     if (currentSession.playerID == requestedMatch.player1_id){
         matches[requestedMatch.queryID].player1SID = socket.id;
-        console.log(matches)
         console.log("player 1 is here");
     } else if (!requestedMatch.player2_id || currentSession.playerID == requestedMatch.player2_id) {
         matches[requestedMatch.queryID].player2SID = socket.id;
@@ -31,8 +32,19 @@ const matchJoin = async (data, socket) => {
         await requestedMatch.save();
         console.log(`Player 2 has joined. Their id is ${currentSession.playerID}`);
     }
+}
 
-
+const inputHandler = (socket, { text, queryID }) => {
+    if (matches[queryID]) {
+        let currentMatch = matches[queryID];
+        console.log(currentMatch);
+        console.log(socket.id);
+        if (socket.id == currentMatch.player1SID || currentMatch.player2SID) {
+            //get the socket.id of the other player
+            let otherSID = (socket.id == currentMatch.player1SID) ? currentMatch.player2SID : currentMatch.player1SID; 
+            socket.broadcast.to(otherSID).emit('p2typed', text);
+        }
+    }    
 }
 
 const connection = (socket) => {
@@ -46,12 +58,10 @@ const connection = (socket) => {
     });
     socket.on('matchJoin', async (data) => matchJoin(data, socket))
 
-    socket.on('type', (data) => {
-        //socket.handshake.session.testValue = true;
-        //socket.handshake.session.save();
-        console.log(socket.handshake.session);
-        socket.broadcast.emit('p2typed', data);
-    });
+    socket.on('type', (data) => inputHandler(socket, data));
+    //     console.log(socket.handshake.session);
+    //     socket.broadcast.emit('p2typed', data);
+    // });
 };
 
 module.exports = function(server, session){ //initialize socket 

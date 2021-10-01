@@ -11,7 +11,7 @@ var p2String = "";
 socket.emit('matchJoin', matchID);
 
 input.addEventListener("keyup",(e) =>{
-    socket.emit('type', input.value);
+    socket.emit('type', { text: input.value, queryID: matchID });
 });
 
 socket.on('p2typed', (data) => {

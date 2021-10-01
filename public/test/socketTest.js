@@ -20,11 +20,3 @@ async function login() {
         console.log(json);
     }
 }
-
-input.addEventListener("keyup",(e) =>{
-    socket.emit('type', input.value);
-});
-
-socket.on('p2typed', (data) => {
-    p2Display.value = data;
-});
