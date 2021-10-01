@@ -1,60 +1,266 @@
-*{
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:'Lakki Reddy', cursive;
+  background-image:url("loginpage.jpg");
+  background: linear-gradient( rgb(4, 43, 58),black);
+  position:relative;
+  background-size: cover;
+  background-repeat:no-repeat; 
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover; 
+  -o-background-size: cover;  
+  font-size: 30px;
+  display: block;
+  justify-content: center;
+}  
+
+ /* ------------------------------------ */
+@keyframes animateSprite {
+  0% {
+    background-position: -600px; /* Starting position moving left sprite */
   }
-  
-  .wrapper {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  20% {
+    background-position: 0px; /* Straight on sprite */
   }
-  
-  body {
-    font-family: 'Lakki Reddy', cursive;
-    background-color: rgb(160, 64, 0);
-    position:relative;
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+  25% {
+    background-position: -200px; /* Moving up sprite */
   }
-  
-  form {
-    display:flex-block;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.712);
-    justify-content: center;
-    border-radius: 10px;
-    border: rgba(0, 0, 0, 0.712) 2px solid;
-    padding: 10px;
+  35% {
+    background-position: -400px; /* Moving right sprite */
   }
-  
-  .btn-primary {
-    align-content: center;
-    margin-top: 10px;
-    background-color: rgb(1, 59, 50);
-    border-radius: 10px;
-    border-style: hidden;
-    border: 5px solid rgb(1, 59, 50);
-    color: black;
+  40% {
+    background-position: -400px;
   }
-  
-  .logininput {
-    background-color: rgba(19, 3, 3, 0);
-    border-style: hidden;
-    border: white 0.5px solid;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    margin-bottom: 10px; 
+  50% {
+    background-position: -200px;  /* Moving up sprite */
   }
-  
-  label{
-    color:white
-    
+  60% {
+    background-position: -0px; /* Straight on sprite */
   }
-  
-  .btn-primary{
-  color:white;
+  67% {
+    background-position: -600px; /* Moving up sprite */
   }
+
+  100% {
+    background-position: -600px;
+  }
+}
+
+@keyframes swim {
+  0% {
+    transform: translate(0, 0); /* Starting position */
+  }
+  20% {
+    transform: translate(calc(-50vw - 100px), 0); /* Animate to center of screen */
+  }
+  25% {
+    transform: translate(calc(-50vw - 100px), 0); /* Stay at the center for 1 second */
+  }
+  35% {
+    transform: translate(calc(-50vw - 100px), -20vh); /* Animate up for 2 seconds */
+  }
+  50% {
+    transform: translate(-25vw, 15vh); /* Animate bottom right for 3 seconds */
+  }
+  60% {
+    transform: translate(-25vw, -20vh); /* Animate up at right of the screen */
+  }
+  67% {
+    transform: translate(-25vw, -20vh);
+  }
+
+  100% {
+    transform: translate(calc(-100vw - 300px), 0); /* Animate past left past the screen */
+  }
+}
+
+
+.bubble {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  bottom: -30px;
+  opacity: 0.2;
+  animation: bubble 10s ease-in-out infinite,
+    sideWays 2s ease-in-out infinite alternate;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0%);
+    opacity: 0.06;
+  }
+  100% {
+    transform: translateY(-120vh);
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 100px;
+  }
+}
+
+.bubble--1 {
+  left: 10%;
+  animation-delay: 0.5s;
+  animation-duration: 16s;
+  opacity: 0.2;
+}
+
+.bubble--2 {
+  width: 15px;
+  height: 15px;
+  left: 40%;
+  animation-delay: 1s;
+  animation-duration: 10s;
+  opacity: 0.1;
+}
+
+.bubble--3 {
+  width: 10px;
+  height: 10px;
+  left: 30%;
+  animation-delay: 5s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.bubble--4 {
+  width: 25px;
+  height: 25px;
+  left: 40%;
+  animation-delay: 8s;
+  animation-duration: 17s;
+  opacity: 0.2;
+}
+
+.bubble--5 {
+  width: 30px;
+  height: 30px;
+  left: 60%;
+  animation-delay: 10s;
+  animation-duration: 15s;
+  opacity: 0.1;
+}
+
+.bubble--6 {
+  width: 10px;
+  height: 10px;
+  left: 80%;
+  animation-delay: 3s;
+  animation-duration: 30s;
+  opacity: 0.4;
+}
+
+.bubble--7 {
+  width: 15px;
+  height: 15px;
+  left: 90%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+  opacity: 0.3;
+}
+
+.bubble--9 {
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  bottom: 30px;
+  animation-delay: -5s;
+  animation-duration: 19s;
+  opacity: 0.2;
+}
+
+.bubble--10 {
+  width: 40px;
+  height: 40px;
+  left: 30%;
+  bottom: 30px;
+  animation-delay: -21s;
+  animation-duration: 16s;
+  opacity: 0.3;
+}
+
+.bubble--11 {
+  width: 30px;
+  height: 30px;
+  left: 60%;
+  bottom: 30px;
+  animation-delay: -13.75s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.bubble--11 {
+  width: 25px;
+  height: 25px;
+  left: 90%;
+  bottom: 30px;
+  animation-delay: -10.5s;
+  animation-duration: 19s;
+  opacity: 0.3;
+}
+/* -------endofbubble---------- */
+
+
+
+
+.btn-primary {
+  box-shadow:  rgb(255, 102, 0) 0px 0px 5px 1px;
+  text-align: center;
+  margin-top: 10px;
+  padding:5px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border-style: hidden;
+  color:rgb(1, 44, 54);
+  font-size: 20px;
+}
+
+.btn-primary:hover {
+  box-shadow:  rgb(255, 102, 0) 0px 0px 5px 2px;
+  text-align: center;
+  margin-top: 10px;
+  padding:5px;
+  background-color: rgb(255, 102, 0);
+  border-radius: 10px;
+  border-style: hidden;
+  color: black;
+  font-size: 20px;
+  color:rgba(255, 255, 255, 0.849);
+}
+
+.p1, .p2 {
+  font-size: 30px;
+}
+
+.p1 {
+  color: rgb(72, 255, 0);
+  margin-left: 20px;
+}
+
+.p2 {
+  color: #ff0000;
+  margin-right: 20px;
+}
