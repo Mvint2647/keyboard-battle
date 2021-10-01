@@ -94,7 +94,7 @@ const newWord = (queryID, socket) => {
 }
 
 const endMatch = (queryID, socket) => {
-
+    let currentMatch = matches[queryID];
 }
 
 const inputHandler = (socket, { text, queryID }) => {
@@ -107,12 +107,9 @@ const inputHandler = (socket, { text, queryID }) => {
             console.log(currentPlayer.typed + " : " + currentWord);
             if (currentPlayer.typed == currentWord) {
                 currentPlayer.score += 1;
-                console.log('pls')
                 if (currentPlayer.score > currentMatch.maxScore) { //the win
                     endMatch(queryID, socket);
-                    console.log('???')
                 }else {
-                    console.log('ok')
                     newWord(queryID, socket);
                 }
             }else{
@@ -124,7 +121,6 @@ const inputHandler = (socket, { text, queryID }) => {
 
 const connection = (socket) => {
     console.log('got connection');
-    console.log(getRandomWord());
     socket.on('login', (data) => {
         socket.handshake.session.reload(err => { 
             if (err) {
