@@ -2,9 +2,8 @@
   box-sizing: border-box;
 }
 
-
-
-
+html,
+body,
 .wrapper {
   height: 100%;
   margin: 0;
@@ -12,22 +11,664 @@
 }
 
 body {
-  font-family: 'Lakki Reddy', cursive;
-  background-image: url("/public/assets/images/unsplash.jpg");
-  position:relative;
+  font-family: "Lakki Reddy", cursive;
+  background-image: url("loginpage.jpg");
+  background: linear-gradient(rgb(0, 48, 66), rgb(0, 0, 0));
+  position: relative;
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  
+
+ 
+
+  display: block;
+  justify-content: center;
+}
+
+h1 {
+  padding-top: 80px;
+  text-align: center;
+}
+.btn-primary {
+  box-shadow: rgb(0, 0, 0) 0px 0px 4px 3px;
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border-style: hidden;
+  color: rgb(1, 53, 66);
+  font-size: 20px;
+}
+
+.btn-primary:hover{
+  box-shadow:rgb(192, 141, 0) 0px 0px 7px 5px;
+  background-color: rgb(192, 141, 0);
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+}
+
+.logininput {
+  box-shadow: rgb(0, 0, 0) 0px 0px 1px .5px;
+  border-style: hidden;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  margin-top: 10px;
+  font-size: 20px;
+}
+label {
+  color: rgb(192, 141, 0);
+  font-size: 30px;
+  vertical-align: space-evenly;
+}
+
+/* ----------KEYFRAMES-----waveyText--------- */
+.words {
+  color: rgb(255, 196, 0);
+  line-height: 1.5;
+}
+
+.words span {
+  font-size: 70px;
+  display: inline-block;
+  animation: move 3s ease-in-out infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  70% {
+    text-shadow: 0 70px 50px rgb(0, 2, 2);
+  }
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+
+.words span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.words span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.words span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.words span:nth-child(5) {
+  animation-delay: 2s;
+}
+
+.words span:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+.words span:nth-child(7) {
+  animation-delay: 3s;
+}
+/* --------------------------------- */
+@keyframes animateSprite {
+  0% {
+    background-position: -600px; /* Starting position moving left sprite */
+  }
+  10% {
+    background-position: 0px; /* Straight on sprite */
+  }
+  15% {
+    background-position: -200px; /* Moving up sprite */
+  }
+  25% {
+    background-position: -400px; /* Moving right sprite */
+  }
+  30% {
+    background-position: 0px; /* Straight on sprite */
+  }
+  35% {
+    background-position: -200px; /* Moving up sprite */
+  }
+  40% {
+    background-position: -400px; /* Moving right sprite */
+  }
+  45% {
+    background-position: -400px;
+  }
+  50% {
+    background-position: -200px; /* Moving up sprite */
+  }
+  60% {
+    background-position: -0px; /* Straight on sprite */
+  }
+  67% {
+    background-position: -600px; /* Moving up sprite */
+  }
+
+  100% {
+    background-position: 600px;
+  }
+}
+
+@keyframes swim {
+  0% {
+    transform: translate(0, 0); /* Starting position */
+  }
+  10% {
+    transform: translate(-25vw, -20vh);
+    /* Animate to center of screen */
+  }
+  15% {
+    transform: translate(-25vw, -20vh);
+    /* Stay at the center for 1 second */
+  }
+  35% {
+    transform: translate(
+      calc(-50vw - 100px),
+      -20vh
+    ); /* Animate up for 2 seconds */
+  }
+  20% {
+    transform: translate(
+      calc(-50vw - 100px),
+      0
+    ); /* Animate to center of screen */
+  }
+  25% {
+    transform: translate(
+      calc(-50vw - 100px),
+      0
+    ); /* Stay at the center for 1 second */
+  }
+  30% {
+    transform: translate(
+      calc(-50vw - 100px),
+      0
+    ); /* Stay at the center for 1 second */
+  }
+  35% {
+    transform: translate(
+      calc(-50vw - 100px),
+      -20vh
+    ); /* Animate up for 2 seconds */
+  }
+  50% {
+    transform: translate(-25vw, 15vh); /* Animate bottom right for 3 seconds */
+  }
+  60% {
+    transform: translate(-25vw, -20vh); /* Animate up at right of the screen */
+  }
+  67% {
+    transform: translate(-25vw, -20vh);
+  }
+
+  100% {
+    transform: translate(
+      calc(-100vw - 300px),
+      0
+    ); /* Animate past left past the screen */
+  }
+}
+
+.bubble {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: absolute;
+  background-color: rgb(105, 177, 199);
+  bottom: -30px;
+  opacity: 0.2;
+  animation: bubble 10s ease-in-out infinite,
+    sideWays 2s ease-in-out infinite alternate;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0%);
+    opacity: 0.06;
+  }
+  100% {
+    transform: translateY(-120vh);
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 100px;
+  }
+}
+
+.bubble--1 {
+  left: 10%;
+  animation-delay: 0.5s;
+  animation-duration: 16s;
+  opacity: 0.2;
+}
+
+.bubble--2 {
+  width: 15px;
+  height: 15px;
+  left: 40%;
+  animation-delay: 1s;
+  animation-duration: 10s;
+  opacity: 0.6;
+}
+
+.bubble--3 {
+  width: 10px;
+  height: 10px;
+  left: 30%;
+  animation-delay: 5s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.bubble--4 {
+  width: 25px;
+  height: 25px;
+  left: 40%;
+  animation-delay: 8s;
+  animation-duration: 17s;
+  opacity: 0.2;
+}
+
+.bubble--5 {
+  width: 30px;
+  height: 30px;
+  left: 60%;
+  animation-delay: 10s;
+  animation-duration: 15s;
+  opacity: 0.1;
+}
+
+.bubble--6 {
+  width: 10px;
+  height: 10px;
+  left: 80%;
+  animation-delay: 3s;
+  animation-duration: 30s;
+  opacity: 0.4;
+}
+
+.bubble--7 {
+  width: 15px;
+  height: 15px;
+  left: 90%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+  opacity: 0.3;
+}
+
+.bubble--9 {
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  bottom: 30px;
+  animation-delay: -5s;
+  animation-duration: 19s;
+  opacity: 0.2;
+}
+
+.bubble--10 {
+  width: 40px;
+  height: 40px;
+  left: 30%;
+  bottom: 30px;
+  animation-delay: -21s;
+  animation-duration: 16s;
+  opacity: 0.3;
+}
+
+.bubble--11 {
+  width: 30px;
+  height: 30px;
+  left: 60%;
+  bottom: 30px;
+  animation-delay: -13.75s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.bubble--11 {
+  width: 25px;
+  height: 25px;
+  left: 90%;
+  bottom: 30px;
+  animation-delay: -10.5s;
+  animation-duration: 19s;
+  opacity: 0.3;
+}
+
+/* --------------------------------- */
+form {
+  display: flexbox;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 
+
+@media (max-width: 375px) {
+  html,
+body,
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lakki Reddy", cursive;
+  background-image: url("loginpage.jpg");
+  background: linear-gradient(rgb(1, 62, 87), rgb(0, 0, 0));
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  font-size: 30px;
+  display: block;
+  justify-content: center;
+}
+h1 {
+ 
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+/* ----------KEYFRAMES-----waveyText--------- */
+
+.words {
+  color: rgb(255, 196, 0);
+  line-height: 1.5;
+}
+
+.words span {
+  font-size: 70px;
+  display: inline-block;
+  animation: move 3s ease-in-out infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  70% {
+    text-shadow: 0 70px 50px rgb(0, 2, 2);
+  }
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+
+.words span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.words span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.words span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.words span:nth-child(5) {
+  animation-delay: 2s;
+}
+
+.words span:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+.words span:nth-child(7) {
+  animation-delay: 3s;
+}
+/* --------------------------------- */
+@keyframes animateSprite {
+  0% {
+    background-position: -600px; /* Starting position moving left sprite */
+  }
+  10% {
+    background-position: 0px; /* Straight on sprite */
+  }
+  15% {
+    background-position: -200px; /* Moving up sprite */
+  }
+  25% {
+    background-position: -400px; /* Moving right sprite */
+  }
+  30% {
+    background-position: 0px; /* Straight on sprite */
+  }
+  35% {
+    background-position: -200px; /* Moving up sprite */
+  }
+  40% {
+    background-position: -400px; /* Moving right sprite */
+  }
+  45% {
+    background-position: -400px;
+  }
+  50% {
+    background-position: -200px; /* Moving up sprite */
+  }
+  60% {
+    background-position: -0px; /* Straight on sprite */
+  }
+  67% {
+    background-position: -600px; /* Moving up sprite */
+  }
+
+  100% {
+    background-position: 600px;
+  }
+}
+
+@keyframes swim {
+  0% {
+    transform: translate(0, 0); /* Starting position */
+  }
+  10% {
+    transform: translate(-25vw, -20vh);
+    /* Animate to center of screen */
+  }
+  15% {
+    transform: translate(-25vw, -20vh);
+    /* Stay at the center for 1 second */
+  }
+  35% {
+    transform: translate(
+      calc(-50vw - 100px),
+      -20vh
+    ); /* Animate up for 2 seconds */
+  }
+  20% {
+    transform: translate(
+      calc(-50vw - 100px),
+      0
+    ); /* Animate to center of screen */
+  }
+  25% {
+    transform: translate(
+      calc(-50vw - 100px),
+      0
+    ); /* Stay at the center for 1 second */
+  }
+  30% {
+    transform: translate(
+      calc(-50vw - 100px),
+      0
+    ); /* Stay at the center for 1 second */
+  }
+  35% {
+    transform: translate(
+      calc(-50vw - 100px),
+      -20vh
+    ); /* Animate up for 2 seconds */
+  }
+  50% {
+    transform: translate(-25vw, 15vh); /* Animate bottom right for 3 seconds */
+  }
+  60% {
+    transform: translate(-25vw, -20vh); /* Animate up at right of the screen */
+  }
+  67% {
+    transform: translate(-25vw, -20vh);
+  }
+
+  100% {
+    transform: translate(
+      calc(-100vw - 300px),
+      0
+    ); /* Animate past left past the screen */
+  }
+}
+
+.bubble {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: absolute;
+  background-color: rgb(1, 40, 62);
+  bottom: -30px;
+  opacity: 0.2;
+  animation: bubble 15s ease-in-out infinite,
+    sideWays 4s ease-in-out infinite alternate;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0%);
+    opacity: 0.06;
+  }
+  100% {
+    transform: translateY(-120vh);
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 200px;
+  }
+}
+
+.bubble--1 {
+  left: 10%;
+  animation-delay: 0.5s;
+  animation-duration: 16s;
+  opacity: 0.2;
+}
+
+.bubble--2 {
+  width: 15px;
+  height: 15px;
+  left: 40%;
+  animation-delay: 1s;
+  animation-duration: 10s;
+  opacity: 0.6;
+}
+
+.bubble--3 {
+  width: 10px;
+  height: 10px;
+  left: 30%;
+  animation-delay: 5s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.bubble--4 {
+  width: 25px;
+  height: 25px;
+  left: 40%;
+  animation-delay: 8s;
+  animation-duration: 17s;
+  opacity: 0.2;
+}
+
+.bubble--5 {
+  width: 30px;
+  height: 30px;
+  left: 60%;
+  animation-delay: 10s;
+  animation-duration: 15s;
+  opacity: 0.1;
+}
+
+.bubble--6 {
+  width: 10px;
+  height: 10px;
+  left: 80%;
+  animation-delay: 3s;
+  animation-duration: 30s;
+  opacity: 0.4;
+}
+
+.bubble--7 {
+  width: 15px;
+  height: 15px;
+  left: 90%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+  opacity: 0.3;
+}
+
+.bubble--9 {
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  bottom: 30px;
+  animation-delay: -5s;
+  animation-duration: 19s;
+  opacity: 0.2;
+}
+
+.bubble--10 {
+  width: 40px;
+  height: 40px;
+  left: 30%;
+  bottom: 30px;
+  animation-delay: -21s;
+  animation-duration: 16s;
+  opacity: 0.3;
+}
+
+.bubble--11 {
+  width: 30px;
+  height: 30px;
+  left: 60%;
+  bottom: 30px;
+  animation-delay: -13.75s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.bubble--11 {
+  width: 25px;
+  height: 25px;
+  left: 90%;
+  bottom: 30px;
+  animation-delay: -10.5s;
+  animation-duration: 19s;
+  opacity: 0.3;
+}
+
+/* --------------------------------- */
 form {
-  display:flex-block;
+  display: flexbox;
+  align-content: center;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.925);
   justify-content: center;
@@ -37,24 +678,40 @@ form {
 }
 
 .btn-primary {
-  align-content: center;
+  box-shadow: rgb(0, 255, 179) 0px 0px 7px 5px;
+  text-align: center;
   margin-top: 10px;
-  background-color: rgb(1, 59, 50);
+  padding: 10px;
+  background-color: rgb(0, 255, 179);
   border-radius: 10px;
   border-style: hidden;
-  border: 5px solid rgb(1, 59, 50);
-  color: black;
+  color: rgba(0, 0, 0, 0.479);
+  font-size: 20px;
+}
+
+.btn-primary:hover {
+  box-shadow: rgb(0, 255, 179) 0px 0px 2px 1px;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgb(0, 255, 179);
+  border-radius: 10px;
+  border-style: hidden;
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  color: rgb(0, 0, 0);
 }
 
 .logininput {
-  background-color: rgba(19, 3, 3, 0);
+  background-color: rgba(19, 3, 3, 0.37);
   border-style: hidden;
-  border: white 0.5px solid;
+  border: rgb(255, 255, 255) 0.5px solid;
   border-radius: 10px;
-  color: black;
-  margin-bottom: 10px; 
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+  font-size: 20px;
 }
-label{
-  color:white
-  
+label {
+  color: rgb(0, 255, 179);
+}
 }
