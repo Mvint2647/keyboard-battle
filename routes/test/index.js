@@ -26,16 +26,12 @@ router.get('/match/create', async (req, res) => {
             player1_id: req.session.playerID
         });
         res.redirect(`../match/${newMatch.queryID}`);
-<<<<<<< HEAD
     } else {
         res.redirect('../../');
-=======
->>>>>>> 3c5fa375d0a462c62c71fa21e2b3ca9ac45f1a54
     }
 });
 
 router.get('/match/:matchID', async (req, res) => {
-<<<<<<< HEAD
     if(req.session.loggedIn) {
         const matchID = req.params.matchID;
         const requestedMatch = await Match.findAll({
@@ -47,15 +43,6 @@ router.get('/match/:matchID', async (req, res) => {
     } else {
         res.redirect('../../');
     }
-=======
-    const matchID = req.params.matchID;
-    const requestedMatch = await Match.findAll({
-        where: {
-            queryID: matchID
-        }
-    })
-    res.sendFile(path.join(__dirname, '../../public/test/matchTest.html'));
->>>>>>> 3c5fa375d0a462c62c71fa21e2b3ca9ac45f1a54
 });
 
 module.exports = router;

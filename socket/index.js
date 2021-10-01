@@ -18,27 +18,43 @@ const matchJoin = async (data, socket) => {
     if (!matches[requestedMatch.queryID]) {
         matches[requestedMatch.queryID] = {
             player1SID: null,
-            player2SID: null
+            player2SID: null,
+            player1Score: 0,
+            player2Score: 0,
+            gameState: 'created',
+            currentWord: null
         }
     }
-
+    let currentMatch = matches[requestedMatch.queryID];
     //are they the player who created the match? if not, theyll join as player two if no one else has. otherwise, theyll spectate
     if (currentSession.playerID == requestedMatch.player1_id){
-        matches[requestedMatch.queryID].player1SID = socket.id;
+        currentMatch.player1SID = socket.id;
         console.log("player 1 is here");
     } else if (!requestedMatch.player2_id || currentSession.playerID == requestedMatch.player2_id) {
-        matches[requestedMatch.queryID].player2SID = socket.id;
+        currentMatch.player2SID = socket.id;
         requestedMatch.player2_id = currentSession.playerID;
         await requestedMatch.save();
         console.log(`Player 2 has joined. Their id is ${currentSession.playerID}`);
+    }
+    if (currentMatch.player1SID && currentMatch.player2SID) {
+        startGame(requestedMatch.queryID);
+    }
+}
+
+const startGame = (queryID) => {
+    if (matches[queryID]) {
+        let currentMatch = matches[queryID];
+        let { player1SID, player2SID } = currentMatch;
+        
+        currentMatch.gameState = "Starting";
+        socket.broadcast.to(player1SID).emit('gameStart');
+        socket.broadcast.to(player2SID).emit('gameStart');
     }
 }
 
 const inputHandler = (socket, { text, queryID }) => {
     if (matches[queryID]) {
         let currentMatch = matches[queryID];
-        console.log(currentMatch);
-        console.log(socket.id);
         if (socket.id == currentMatch.player1SID || currentMatch.player2SID) {
             //get the socket.id of the other player
             let otherSID = (socket.id == currentMatch.player1SID) ? currentMatch.player2SID : currentMatch.player1SID; 
