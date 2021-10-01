@@ -1,4 +1,6 @@
-*{
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -670,10 +672,8 @@ form {
   display: flexbox;
   align-content: center;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.925);
   justify-content: center;
   border-radius: 10px;
-  border: black 2px solid;
   padding: 10px;
 }
 
