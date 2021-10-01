@@ -24,9 +24,11 @@
                 </div>
             </div>
         </nav>
-        <button type="button" id="login" onclick="login()">login</button>
-        <input type="text" placeholder="Player1 please type here" id="player1"/>
-        <input type="text" disabled="disabled" placeholder="Player2 will show here" id="player2"/>
+        
+        <h2 id="gameStateText">Game not started: Waiting on both players to join.</h2>
+        <br>
+        <input type="text" disabled="false" placeholder="Player1 please type here" id="player1"/>
+        <input type="text" disabled="true" placeholder="Player2 will show here" id="player2"/>
         <script src="/socket.io/socket.io.js"></script>
         <script src="/test/matchTest.js"></script>
     </body>
