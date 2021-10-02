@@ -2,6 +2,15 @@
     <head>
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <style>
+            .greenHighlight {
+                color: rgb(146, 211, 48);
+            }
+            .redHighlight {
+                color: red;
+            }
+        </style>
     </head>
 
     <body class="container">
@@ -27,8 +36,11 @@
         
         <h2 id="gameStateText">Game not started: Waiting on both players to join.</h2>
         <br>
-        <input type="text" disabled="false" placeholder="Player1 please type here" id="player1"/>
+        <input type="text" disabled="true" placeholder="Player1 please type here" id="player1"/>
         <input type="text" disabled="true" placeholder="Player2 will show here" id="player2"/>
+        <br>
+        <h3 id = "myScore"></h3>
+        <h3 id = "p2Score"></h3>
         <script src="/socket.io/socket.io.js"></script>
         <script src="/test/matchTest.js"></script>
     </body>
