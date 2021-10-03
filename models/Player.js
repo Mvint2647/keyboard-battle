@@ -19,39 +19,48 @@ Player.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
+            validate: {
+              isEmail: true,
+            }
             
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            // validate: {
-            //     isAlphanumeric: true,
-            // }
+           
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+              len: [6],
+            },
         }
     },
     {
-        hooks: {
-          async beforeCreate (data) {
-            data.password = await bcrypt.hash(data.password, 10);
-            return data;
-          },
-          async beforeUpdate (data) {
-            if (data.password) {
-              data.password =await bcrypt.hash(data.password, 10);
-            }
-            return data;
-          }
+      hooks: {
+        beforeCreate: async (newUserData) => {
+          console.log("hashing");
+          newUserData.password = await bcrypt.hash(newUserData.password, 10);
+          return newUserData;
         },
+        beforeUpdate: async (updatedUserData) => {
+          if (updatedUserData.password) {
+          updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+          }
+          return updatedUserData;
+        },
+      },
+      
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'player',
       }
+
 )
+
 
 module.exports = Player;

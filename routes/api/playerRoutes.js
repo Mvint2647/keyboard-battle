@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
     // use `bcrypt.compare()` to compare the provided password and the hashed password
     const validPassword = await bcrypt.compare(
       req.body.password,
-      userData.password
+      playerData.password
     );
     // if they do not match, return error message
     if (!validPassword) {
@@ -28,16 +28,25 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/signup', (req, res) => {
-  Player.create(req.body).then(response => {
-    res.json(response)
-    //Change the session to have a logged in registered user and then
-    //reroute to a seperate page
-  })
-})
+router.post('/signup', async (req, res) => {
+  try {
+    const playerData = await Player.create(req.body);
+    res.status(200).json(playerData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
-router.get("/", (req, res) => {
-  Player.findAll({}).then(response => res.json(response))
-})
+router.get("/", async (req, res) => {
+  try {
+    const players = await Player.findAll();
+    res.render('homepage', {
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
