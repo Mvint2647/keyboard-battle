@@ -37,7 +37,7 @@
             <span>S</span>
         </div>
     </h1>
-
+{{!-----------------background animation--------------}}
     <div class="ocean">
         <div class="bubble bubble--1"></div>
         <div class="bubble bubble--2"></div>
@@ -53,7 +53,7 @@
         <div class="bubble bubble--12"></div>
     </div>
 
-{{!--------------login and signup-------------- --}}
+{{!--------------login form------------- --}}
 <article class="columnall">
     <form class="row" id="login">
         <div class="column">
@@ -66,7 +66,7 @@
                 <input class="logininput" type="password" name="password" id="password-login" />
             </div>
             <div>
-                <input class="btn btn-primary" type="submit" value="ENTER HERE" />
+                <input class="btn btn-primary" type="submit" value="ENTER HERE !" />
             </div>
             </div>
             </div>
@@ -76,8 +76,17 @@
     <div class="column"></div>
     <div class="columntwo"></div>
  
-    <form class="row" id="signup">
+
+
+
+{{!------------------sign up form------------}}
+    <div class="row" id="signup">
+        
         <div class="columnthree">
+            {{!------v----show hide function---v---------}}
+             <button class="btn btn-primary" onclick="myFunction()">Sign Up!</button>
+    <div id="myDIV">
+        {{!--------^--show hide function-^-----------}}
             <h3>Sign Up</h3>
             <label>Username:</label>
             <input class="logininput" type="text" name="username" id="username-signup" />
@@ -90,13 +99,17 @@
                 <input class="logininput" type="password" name="password" id="password-signup" />
             </div>
             <div>
-                <input class="btn btn-primary" type="Sign Up!" value="Sign Up!" />
+                <input class="btn btn-primary" type="Sign Up!" value="Submit!" />
             </div>
         </div>
+        </div>
+    </div>
     </form>
   </article>
   
-  
+
+   
+   
     <script src="/js/login.js"></script>
 </body>
 
