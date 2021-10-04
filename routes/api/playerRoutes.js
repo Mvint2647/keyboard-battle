@@ -13,7 +13,6 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-
     req.session.save(() => {
       req.session.loggedIn = true;
 
@@ -52,10 +51,21 @@ router.post('/login', async (req, res) => {
 });
 
 
-
+// get all players
 router.get("/", async (req, res) => {
   const players = await Player.findAll();
   res.status(200).json(players);
-})
+});
+
+// Logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 module.exports = router;
