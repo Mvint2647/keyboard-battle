@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+  console.log("route");
   try {
     // we search the DB for a user with the provided email
     const playerData = await Player.findOne({ where: { email: req.body.email } });
