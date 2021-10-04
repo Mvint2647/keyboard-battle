@@ -32,7 +32,6 @@ footer {
   bottom: 0;
   width: 100%;
   height: 80px;
-  background: #fafafa;
   border-top: solid 1px #eee;
 }
 
@@ -53,7 +52,7 @@ footer {
 
 .header a {
   float: auto;
-  color: rgb(236, 117, 6);
+  color:rgb(255, 102, 0);
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -64,10 +63,19 @@ footer {
 
 h1 {
   float: auto;
-  color: rgb(236, 144, 6);
+ color:rgb(255, 102, 0);
   text-align: center;
 
 }
+
+h2, 
+p{
+  font-size: 30px;
+  margin: 20px;
+background-color: white;
+}
+
+
 
 
 .hiddenEl {
