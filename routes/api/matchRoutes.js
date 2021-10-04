@@ -14,6 +14,4 @@ router.get('/create', async (req, res) => {
     }
 });
 
-router.get()
-
 module.exports = router;

@@ -1,5 +1,7 @@
 const socket = io();
 
+console.log("WHY")
+
 const input = document.getElementById("p1Input");
 const p2TextDisplay = document.getElementById('p2Input');
 const textDisplayEl = document.getElementById('gameStateText');
@@ -24,7 +26,7 @@ const renderHighlight = () => {
     console.log(p1Text);
     console.log(targetWord.includes(p1Text))
     if (targetWord.includes(p1Text)) {
-        textDisplayEl.innerHTML = `<span class="greenHighlight">${targetWord.substring(0, p1Text.length)}</span>${targetWord.substring(p1Text.length, targetWord.length)}`
+        textDisplayEl.innerHTML = `<span class="correct">${targetWord.substring(0, p1Text.length)}</span>${targetWord.substring(p1Text.length, targetWord.length)}`
     }
     // for (let i=0; i<p1Text; i++){
     //     if(p1Text[i].toLowerCase() == word[i].toLowerCase()){

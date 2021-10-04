@@ -37,8 +37,7 @@
     <input type="text" id="p1Input" class="quote-input"></input>
  </div>
 <div class="player1" id=""> PLAYER 1</div>
-<div class="score2"> P1 Score</div>
-<textarea disabled="true" id="p1Score" class="scores">0</textarea>
+<div class="score2" id="p1Score"> P1 Score</div>
 </div>
 
 
@@ -48,11 +47,11 @@
     <input type="text" disabled="true" id="p2Input" class="quote-input"></input>
  </div>
 <div class="player1"> PLAYER 2</div>
-<div class="score1"> P2 Score</div>
-<textarea id="quoteInput" disabled="true" class="scores">0</textarea>
+<div class="score1" id="p2Score"> P2 Score</div>
 </div>
 
-
+<script src="/socket.io/socket.io.js"></script>
+<script src="../js/matchplay.js"></script>
 
 </body>
 </html>

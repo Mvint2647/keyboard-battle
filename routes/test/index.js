@@ -29,7 +29,7 @@ router.get('/match/create', async (req, res) => {
             queryID: createQueryID(),
             player1_id: req.session.playerID
         });
-        res.redirect(`../match/${newMatch.queryID}`);
+        res.redirect(`../../match/${newMatch.queryID}`);
     } else {
         res.redirect('../../');
     }
