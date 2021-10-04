@@ -2,31 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Keyboard Battle</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Keyboard Battle</title>
 </head>
-<header>
+
+<body>
+  <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul class="nav navbar-nav">
+
+                <li><a href="dashboard-btn">Dashboard</a></li>
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                {{#if loggedIn}}
+                <li><a href="/logout">Log Out</a></li>
+                {{else}}
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+              </ul>
+            </div>
+          </div>
+          </div>
+    </nav>
     <div class="container">
-  <div class="row justify-content-center">
-    {{!--------------title art-----------}}
-    <h1>
-        <div class="words word-1">
+      <div class="row justify-content-center">
+        {{!--------------title art-----------}}
+        <h1>
+          <div class="words word-1">
             <span>B</span>
             <span>A</span>
             <span>T</span>
             <span>T</span>
             <span>L</span>
             <span>E</span>
-        </div>
-        <div class="words word-2">
+          </div>
+          <div class="words word-2">
             <span>H</span>
             <span>O</span>
             <span>M</span>
@@ -35,109 +57,95 @@
             <span>A</span>
             <span>G</span>
             <span>E</span>
-        </div>
-    </h1>
-  </div>
-</div>
-</header>
-<body>
-      <div class="ocean">
-        <div class="bubble bubble--1"></div>
-        <div class="bubble bubble--2"></div>
-        <div class="bubble bubble--3"></div>
-        <div class="bubble bubble--4"></div>
-        <div class="bubble bubble--5"></div>
-        <div class="bubble bubble--6"></div>
-        <div class="bubble bubble--7"></div>
-        <div class="bubble bubble--8"></div>
-        <div class="bubble bubble--9"></div>
-        <div class="bubble bubble--10"></div>
-        <div class="bubble bubble--11"></div>
-        <div class="bubble bubble--12"></div>
+          </div>
+        </h1>
+      </div>
     </div>
-{{!-- 
- <div class="container">
-    <div class="page-header">
-        <div class="header">
-  <a href="#default" class="logo">Dashboard</a>
-  <div class="header-right">
-   
-  </div> --}}
-
-
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-             <div class="row">
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    
-                    <li><a href="dashboard-btn">Dashboard</a></li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                  {{#if loggedIn}}
-                    <li><a href="/logout">Log Out</a></li>
-                  {{else}}
-                    <li><a href="/login">Log In</a></li>
-                  {{/if}}
-                 </ul>
-            </div>
-        </div>  
-        </nav>
-        
-        </div>
-
-<div class="container">
-  <div class="center">
-      
-      <button type="button" class="btn btn-dark btn-block startBtn">Click here to start</button>
-    <div class="status hiddenEl">Waiting for opponent</div>
-
-
-    <div id="div1" class="fa hrGlass hiddenEl"></div>
+  </header>
+  <div class="ocean">
+    <div class="bubble bubble--1"></div>
+    <div class="bubble bubble--2"></div>
+    <div class="bubble bubble--3"></div>
+    <div class="bubble bubble--4"></div>
+    <div class="bubble bubble--5"></div>
+    <div class="bubble bubble--6"></div>
+    <div class="bubble bubble--7"></div>
+    <div class="bubble bubble--8"></div>
+    <div class="bubble bubble--9"></div>
+    <div class="bubble bubble--10"></div>
+    <div class="bubble bubble--11"></div>
+    <div class="bubble bubble--12"></div>
   </div>
-</div>
+  {{!--
+  <div class="container">
+    <div class="page-header">
+      <div class="header">
+        <a href="#default" class="logo">Dashboard</a>
+        <div class="header-right">
 
-<script>
+        </div> --}}
 
 
-  function hourglass() {
-    var a = document.getElementById("div1");
-    a.innerHTML = "&#xf251;";
-    setTimeout(function () {
-        a.innerHTML = "&#xf252;";
-      }, 1000);
-    setTimeout(function () {
-        a.innerHTML = "&#xf253;";
-      }, 2000);
-  }
-  hourglass();
-  setInterval(hourglass, 3000);
 
-  function start(){
-    let status = document.querySelector('.status');
-    status.classList.remove('hiddenEl');
 
-    let hrGlass = document.querySelector('.hrGlass');
-    hrGlass.classList.remove('hiddenEl');
-  }
-  let startBtn = document.querySelector('.startBtn');
-  startBtn.addEventListener('click',start); 
-</script>
-<br>
-<br>
-<br>
-<br>
-  <footer class="footerbox"><h2>The FINISH LINE AWAITS!</h2>
-<p>Once you and your opponent have signed in.. simply press, “match create”, to get a link to send.<br> Once both players are logged in…<br><h4>&#128674;LET THE GAMES BEGIN!</h4><p>Compete to type the word displayed and the first player to 7 points WINS!</p>
-    </footer>
+
+      <div class="container">
+        <div class="center">
+
+          <button type="button" class="btn btn-dark btn-block startBtn" id="createMatch">Click here to start</button>
+          <div class="status hiddenEl" id="linkText"></div>
+          <div class="status hiddenEl">Waiting for opponent</div>
+
+          <div id="div1" class="fa hrGlass hiddenEl"></div>
+        </div>
+      </div>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/homepage.js"></script>
+
+      <script>
+
+
+        function hourglass() {
+          var a = document.getElementById("div1");
+          a.innerHTML = "&#xf251;";
+          setTimeout(function () {
+            a.innerHTML = "&#xf252;";
+          }, 1000);
+          setTimeout(function () {
+            a.innerHTML = "&#xf253;";
+          }, 2000);
+        }
+        hourglass();
+        setInterval(hourglass, 3000);
+
+        function start() {
+          let status = document.querySelector('.status');
+          status.classList.remove('hiddenEl');
+
+          let hrGlass = document.querySelector('.hrGlass');
+          hrGlass.classList.remove('hiddenEl');
+        }
+        let startBtn = document.querySelector('.startBtn');
+        startBtn.addEventListener('click', start);
+      </script>
+      <br>
+      <br>
+      <br>
+      <br>
+      <footer class="footerbox">
+        <h2>The FINISH LINE AWAITS!</h2>
+        <p>Once you and your opponent have signed in.. simply press, “match create”, to get a link to send.<br> Once
+          both players are logged in…<br>
+        <h4>&#128674;LET THE GAMES BEGIN!</h4>
+        <p>Compete to type the word displayed and the first player to 7 points WINS!</p>
+      </footer>
 </body>
+
 </html>
-   
-   
-    {{!-lines 130-135- <p class="lead">
-  The FINISH LINE AWAITS! Once you and your opponent gets signed in, simply press “match create” to get a link to send. Once both players are logged in….LET THE GAMES BEGIN! Compete to type the word displayed and the first player to 7 points WINS!</p> --}}
- 
 
 
-
+{{!-lines 130-135- <p class="lead">
+  The FINISH LINE AWAITS! Once you and your opponent gets signed in, simply press “match create” to get a link to send.
+  Once both players are logged in….LET THE GAMES BEGIN! Compete to type the word displayed and the first player to 7
+  points WINS!</p> --}}

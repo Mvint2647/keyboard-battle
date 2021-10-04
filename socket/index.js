@@ -2,6 +2,7 @@ const socket = require('socket.io');
 const sharedsession = require("express-socket.io-session");
 const { Match, Player } = require('../models');
 const { getRandomWord, createQueryID } = require('../utils');
+const { query } = require('express');
 var io;
 //the game logic will be programmed here for now, may eventually be modularized
 var matches = {} //matches will keep track of queryIDs and the socketids of each player 
@@ -20,6 +21,8 @@ const matchJoin = async (data, socket) => {
             id: currentSession.playerID
         }
     })
+    //tell player 1 to join 
+    
     //start tracking the match if we aren't already
     if (!matches[requestedMatch.queryID]) {
         matches[requestedMatch.queryID] = {
@@ -53,7 +56,11 @@ const matchJoin = async (data, socket) => {
         socket.join(requestedMatch.queryID);
         socket.emit('matchCreated', 0); //tell the client the match is ready and tell them which player they are so they can interperet the score later
         console.log("player 1 is here");
+        if(requestedMatch.player2_id){
+            socket.emit("setP2Name", currentMatch.p2.name);
+        }
     } else if (!requestedMatch.player2_id || currentSession.playerID == requestedMatch.player2_id) {
+        io.to(data).emit('joinMatch', data);
         currentMatch.p2.sid = socket.id;
         currentMatch.p2.id = currentSession.playerID;
         currentMatch.p2.name = currentPlayer.name;
@@ -63,6 +70,7 @@ const matchJoin = async (data, socket) => {
         socket.broadcast.to(requestedMatch.queryID).emit("setP2Name", currentPlayer.name);
         requestedMatch.player2_id = currentSession.playerID;
         await requestedMatch.save();
+        socket.emit("setP2Name", currentMatch.p1.name);
         console.log(`Player 2 has joined. Their id is ${currentSession.playerID}`);
     }
     if (currentMatch.p1.id && currentMatch.p2.id) {
@@ -70,9 +78,17 @@ const matchJoin = async (data, socket) => {
     }
 }
 
+const homepageCreation = (queryID, socket) => {
+    socket.join(queryID);
+    matchJoin(queryID, socket);
+};
+
 const initializeMatch = (queryID, socket) => {
     if (matches[queryID]) {
         let currentMatch = matches[queryID];
+        let { p1, p2 } = currentMatch;
+        io.to(p2.sid).emit("setP2Name", p1.name);
+        io.to(p1.sid).emit("setP2Name", p2.name);
         console.log('starting');
         currentMatch.gameState = 'Starting';
     }
@@ -169,6 +185,9 @@ const connection = (socket) => {
             }
         });
     });
+    
+    socket.on('homepageCreation', async (data) => homepageCreation(data, socket));
+
     socket.on('matchJoin', async (data) => matchJoin(data, socket));
 
     socket.on('ready', (data) => playerReady(data, socket));

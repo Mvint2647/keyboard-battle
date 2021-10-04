@@ -8,9 +8,9 @@ router.get('/create', async (req, res) => {
             queryID: createQueryID(),
             player1_id: req.session.playerID
         });
-        res.redirect(`../../match/${newMatch.queryID}`);
+        res.json({url: newMatch.queryID});
     } else {
-        res.redirect('../../../');
+        res.json({err: 'please login'});
     }
 });
 
