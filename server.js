@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+require('dotenv').config();
 
 const routes = require('./routes');
 const sequelize = require('./config/connection');
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({});
 
 var sessionMiddleware = session({
-    secret: 'testSecret',
+    secret: process.env.SECRET || 'test secret',
     resave: true,
     saveUninitialized: true
 });

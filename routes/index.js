@@ -22,9 +22,9 @@ router.get('/login',(req, res) => {
 })
 
 router.get('/logout',(req, res) => {
-    req.session.destroy(() => {
-        res.redirect('../');
-    });
+    req.session.loggedIn = false;
+    req.session.playerID = null;
+    res.redirect('../');
 })
 
 //match directories
