@@ -1,9 +1,71 @@
-body {
-  background-image: url("https://gfycat.com/thisunselfishfrogmouth");
-  background-size: cover;
-  background-attachment: fixed;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.home-btn {
-  color: rgb(204, 20, 20);
+html,
+body,
+
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:'Lakki Reddy', cursive;
+  background: linear-gradient( rgb(0, 1, 2),rgb(29, 29, 73));
+  position:relative;
+  background-size: cover;
+  background-repeat:no-repeat; 
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover; 
+  -o-background-size: cover;  
+  font-size: 30px;
+  display: block;
+  justify-content: center;
+}  
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background: #fafafa;
+  border-top: solid 1px #eee;
+}
+
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#div1 {
+  font-size:48px;
+  background: linear-gradient( rgb(127, 150, 173),rgb(67, 67, 73));
+}
+
+.header a {
+  float: auto;
+  color: rgb(236, 117, 6);
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+h1 {
+  float: auto;
+  color: rgb(236, 144, 6);
+  text-align: center;
+
+
+
 }

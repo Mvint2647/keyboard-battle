@@ -1,18 +1,40 @@
- <html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Keyboard Battle</title>
+</head>
+<header>
+    <div class="container">
+  <div class="row justify-content-center">
+    <h1>Welcome to the Keyboard Battle</h1>
+  </div>
+</div>
+</header>
 
-<body class="container">
+{{!-- <body>
+ <div class="container">
     <div class="page-header">
-        <h1>Welcome to the Keyboard Battle</h1>
-    </div>
+        <div class="header">
+  <a href="#default" class="logo">Dashboard</a>
+  <div class="header-right">
+   
+  </div> --}}
+
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+             <div class="row">
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="home-btn bg danger">Home</a></li>
                     <li><a href="dashboard-btn">Dashboard</a></li>
@@ -23,29 +45,45 @@
                     <li><a href="/logout">Log Out</a></li>
 
                     <li><a href="/login">Log In</a></li>
-
-
-                </ul>
+                 </ul>
             </div>
-        </div>              
-    </nav>
-    <div class="container row">
-        <h1>The FINISH LINE AWAITS!</h1>
-    </div>
+        </div>  
+        </nav>
+        
+        </div>
 
-    <!-- <div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe
-            src='https://gfycat.com/ifr/ThisUnselfishFrogmouth' frameborder='0' scrolling='no' width='100%'
-            height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div> -->
-    <p> <a href="https://gfycat.com/thisunselfishfrogmouth">via Gfycat</a></p>
+<div class="container">
+  <div class="center">
+      
+      <button type="button" class="btn btn-dark btn-block">Click here to start</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Waiting for opponent </button>
+
+<body>
+    <div id="div1" class="fa"></div>
+
+
+
+<script>
+function hourglass() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf251;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf252;";
+    }, 1000);
+  setTimeout(function () {
+      a.innerHTML = "&#xf253;";
+    }, 2000);
+}
+hourglass();
+setInterval(hourglass, 3000);
+</script>
+</div>
+</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
+<footer>
+    
+<h2>The FINISH LINE AWAITS!</h2>
+   </footer>
 </html>
+
