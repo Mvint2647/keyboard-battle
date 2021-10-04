@@ -15,8 +15,7 @@ body,
 
 body {
   font-family:'Lakki Reddy', cursive;
-  background-image:url("loginpage.jpg");
-  background: linear-gradient( rgb(92, 142, 163),rgb(20, 21, 87));
+  background: linear-gradient( rgb(0, 1, 2),rgb(29, 29, 73));
   position:relative;
   background-size: cover;
   background-repeat:no-repeat; 
@@ -49,15 +48,24 @@ body {
 
 #div1 {
   font-size:48px;
+  background: linear-gradient( rgb(127, 150, 173),rgb(67, 67, 73));
 }
 
 .header a {
-  float: left;
-  color: black;
+  float: auto;
+  color: rgb(236, 117, 6);
   text-align: center;
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+}
+h1 {
+  float: auto;
+  color: rgb(236, 144, 6);
+  text-align: center;
+
+
+
 }
