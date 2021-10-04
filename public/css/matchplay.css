@@ -161,6 +161,11 @@ body {
  
 }
 
+#gameStateText {
+  text-align: center;
+  color: white;
+}
+
 .correct {
   color: rgb(0, 185, 0);
 }
