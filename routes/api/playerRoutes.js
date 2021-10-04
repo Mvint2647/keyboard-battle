@@ -2,6 +2,27 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const Player = require('../../models/Player');
 
+
+// Create a new player 
+router.post('/', async (req, res) => {
+  try {
+    const playerData = await Player.create({
+      username: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(playerData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     // we search the DB for a user with the provided email
@@ -28,25 +49,11 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/signup', async (req, res) => {
-  try {
-    const playerData = await Player.create(req.body);
-    res.status(200).json(playerData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+
 
 router.get("/", async (req, res) => {
-  try {
-    const players = await Player.findAll();
-    res.render('homepage', {
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+  const players = await Player.findAll();
+  res.status(200).json(players);
+})
 
 module.exports = router;
