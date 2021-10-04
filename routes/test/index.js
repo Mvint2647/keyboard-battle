@@ -3,8 +3,12 @@ const path = require('path');
 const { createQueryID } = require('../../utils');
 const { Match } = require('../../models');
 
-router.post('/createuser', async (req, res) => {
+// router.post('/createuser', async (req, res) => {
 
+// });
+
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../public/test/homepageSOCKETTEST.html'));
 });
 
 router.post('/login', async (req, res) => {
