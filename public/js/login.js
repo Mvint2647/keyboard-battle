@@ -1,3 +1,6 @@
+let params = (new URL(document.location)).searchParams;
+let redirect = (params) ? params.get("r") : null;
+
 const loginForm = async (event) => {
     event.preventDefault();
     console.log("test");
@@ -14,7 +17,8 @@ const loginForm = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace((redirect) ? `/match/${redirect}` : '/');
+
         } else {
             alert('Failed to log in.');
         }

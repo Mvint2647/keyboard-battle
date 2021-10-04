@@ -106,7 +106,6 @@ p {
   67% {
     background-position: -600px; /* Moving up sprite */
   }
-
   100% {
     background-position: -600px;
   }
@@ -143,7 +142,6 @@ p {
   67% {
     transform: translate(-25vw, -20vh);
   }
-
   100% {
     transform: translate(
       calc(-100vw - 300px),
