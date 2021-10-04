@@ -6,11 +6,13 @@ const Player = require('../../models/Player');
 // Create a new player 
 router.post('/', async (req, res) => {
   try {
+    console.log("player", req.body);
     const playerData = await Player.create({
-      username: req.body.name,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
     });
+
 
     req.session.save(() => {
       req.session.loggedIn = true;
