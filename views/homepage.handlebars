@@ -41,10 +41,11 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-
+              
                     <li><a href="/logout">Log Out</a></li>
-
+                    
                     <li><a href="/login">Log In</a></li>
+                    
                  </ul>
             </div>
         </div>  
@@ -56,7 +57,7 @@
   <div class="center">
       
       <button type="button" class="btn btn-dark btn-block">Click here to start</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">Waiting for opponent </button>
+    <button type="button" id= "btnsubmit" class="btn btn-warning btn-lg btn-block">Waiting for opponent</button>
 
 <body>
     <div id="div1" class="fa"></div>
@@ -64,6 +65,10 @@
 
 
 <script>
+
+
+{{!-- How to hide an element/getElementById --}}
+
 function hourglass() {
   var a;
   a = document.getElementById("div1");
@@ -77,6 +82,13 @@ function hourglass() {
 }
 hourglass();
 setInterval(hourglass, 3000);
+
+{{!-- 
+function show_hide(btnsubmithide, btnsubmitshow)
+        {
+            document.getElementById(btnsubmit).style.visibility='hidden';
+            document.getElementById(btnsubmit.style.visibility='visible'; --}}
+        
 </script>
 </div>
 </div>
