@@ -9,6 +9,7 @@ const p2ScoreDisplay = document.getElementById('p2Score');
 const matchID = window.location.href.substring(window.location.href.lastIndexOf("/")+1, window.location.href.length);
 
 var highlight = false;
+var gameOver = false;
 var myPID = null; //tells them which score is theirs
 var p2PID;
 var targetWord;
@@ -46,7 +47,7 @@ socket.on('gameStart', (word) => {
 });
 
 socket.on('setP2Name', (name) => {
-    p2NameDisplay.textContent = `${name}'s Score:'`
+    p2NameDisplay.textContent = `${name}'s Score:`
     input.removeAttribute('disabled');
     textDisplayEl.innerHTML = "Both players must type ready to start";
 })
@@ -69,9 +70,10 @@ socket.on('newWord', ({word, score}) => {
 });
 
 socket.on("gameOver", ({winner, score}) => {
-    textDisplayEl.textContent = `${winner} won!\n To rematch, both players must type rematch`;
+    textDisplayEl.textContent = `${winner} won!\n To rematch, both players must type rematch \n To return to the homepage type quit`;
     myScoreDisplay.textContent = `${score[myPID]}`;
     p2ScoreDisplay.textContent = `${score[p2PID]}`;
+    gameOver = true;
     highlight = false;
     input.value = "";
     p2TextDisplay.value = "";
@@ -87,8 +89,12 @@ window.addEventListener("load", () => {
 
 input.addEventListener('keyup',(e) =>{
     socket.emit('type', { text: input.value, queryID: matchID });
-    if (input.value.toLowerCase() == "rematch") {
+    if (input.value.toLowerCase() == "rematch" && gameOver) {
         socket.emit('rematch', matchID)
+    }
+    if (input.value.toLowerCase() == "quit" && gameOver) {
+        socket.emit('quit', matchID);
+        document.location.replace(`/`);
     }
     if (input.value.toLowerCase() == "ready") {
         socket.emit('ready', matchID);

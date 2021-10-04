@@ -9,10 +9,23 @@ matchBtn.addEventListener('click', async () => {
     if (response.err) {
         document.location.replace('/login');
     }
-    linkDisplay.textContent = `Send someone this link to play with them! \n${window.location.href}match/${response.url}`;
+    linkDisplay.innerHTML = `Send someone this link to play with them! \n<span id='url'>${window.location.href}match/${response.url}</span>`;
     linkDisplay.classList.remove('hiddenEl');
+    let urlEl = document.querySelector('#url');
     socket.emit("homepageCreation", response.url);
 });
+
+linkDisplay.onclick = () => {
+    document.execCommand("copy");
+}
+
+linkDisplay.addEventListener("copy", (event) => {
+    event.preventDefault();
+    if (event.clipboardData) {
+        event.clipboardData.setData("text/plain", document.querySelector('#url').textContent);
+        console.log(event.clipboardData.getData("text"))
+    }
+})
 
 socket.on("joinMatch", (queryID) => {
     document.location.replace(`/match/${queryID}`);

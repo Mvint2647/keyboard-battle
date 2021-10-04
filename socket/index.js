@@ -70,6 +70,7 @@ const matchJoin = async (data, socket) => {
         socket.broadcast.to(requestedMatch.queryID).emit("setP2Name", currentPlayer.name);
         requestedMatch.player2_id = currentSession.playerID;
         await requestedMatch.save();
+        socket.emit("setP2Name", currentMatch.p1.name);
         console.log(`Player 2 has joined. Their id is ${currentSession.playerID}`);
     }
     if (currentMatch.p1.id && currentMatch.p2.id) {
@@ -85,6 +86,9 @@ const homepageCreation = (queryID, socket) => {
 const initializeMatch = (queryID, socket) => {
     if (matches[queryID]) {
         let currentMatch = matches[queryID];
+        let { p1, p2 } = currentMatch;
+        io.to(p2.sid).emit("setP2Name", p1.name);
+        io.to(p1.sid).emit("setP2Name", p2.name);
         console.log('starting');
         currentMatch.gameState = 'Starting';
     }
