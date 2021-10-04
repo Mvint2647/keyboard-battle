@@ -15,7 +15,16 @@ router.get('/',(req, res) => {
 
 })
 router.get('/login',(req, res) => {
+    if (req.session.loggedIn){
+        res.redirect('../');
+    }
     res.render('login')
+})
+
+router.get('/logout',(req, res) => {
+    req.session.destroy(() => {
+        res.redirect('../');
+    });
 })
 
 //match directories
