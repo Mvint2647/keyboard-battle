@@ -7,7 +7,7 @@ const loginForm = async (event) => {
 
 
     if (email && password) {
-        const response = await fetch('../api/player/login', {
+        const response = await fetch('/api/player/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -25,14 +25,14 @@ const loginForm = async (event) => {
 const signupForm = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector('#username-signup').value.trim();
+    const name = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
-    if (username && email && password) {
-        const response = await fetch('../api/player', {
+    if (name && email && password) {
+        const response = await fetch('/api/player', {
             method: 'POST',
-            body: JSON.stringify({ username, email, password }),
+            body: JSON.stringify({ name, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -46,10 +46,10 @@ const signupForm = async (event) => {
 
 
 document
-    .querySelector('.login')
+    .querySelector('#login')
     .addEventListener('submit', loginForm);
 
 document
-    .querySelector('.signup-form')
+    .querySelector('#signup')
     .addEventListener('submit', signupForm);
 
