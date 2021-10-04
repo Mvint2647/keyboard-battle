@@ -162,7 +162,7 @@ const inputHandler = (socket, { text, queryID }) => {
             let currentPlayer = (socket.id == p1.sid) ? p1 : p2;
             currentPlayer.typed = text;
             console.log(currentPlayer.typed + " : " + currentWord);
-            if (currentPlayer.typed == currentWord) {
+            if (currentPlayer.typed == currentWord && currentMatch.gameState != "finished") {
                 currentPlayer.score += 1;
                 if (currentPlayer.score >= currentMatch.maxScore) { //the win
                     endMatch(queryID, socket);
@@ -174,6 +174,15 @@ const inputHandler = (socket, { text, queryID }) => {
             }
         }
     }    
+}
+
+const playerQuit = (queryID, socket) => {
+    if (matches[queryID]) {
+        let currentMatch = matches[queryID];
+        if(socket.id == currentMatch.p1.sid || currentMatch.p2.sid) {
+            io.to(queryID).emit("playerQuit");
+        }
+    }
 }
 
 const connection = (socket) => {
@@ -191,6 +200,8 @@ const connection = (socket) => {
     socket.on('matchJoin', async (data) => matchJoin(data, socket));
 
     socket.on('ready', (data) => playerReady(data, socket));
+
+    socket.on('quit', (data) => playerQuit(data, socket));
 
     socket.on('rematch', (data) => rematch(data, socket));
 

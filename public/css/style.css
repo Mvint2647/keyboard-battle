@@ -332,3 +332,7 @@ p {
   animation-delay: 3s;
 }
 
+#linkText {
+  color: white;
+  font-size: large;
+}

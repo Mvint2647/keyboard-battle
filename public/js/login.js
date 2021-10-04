@@ -1,6 +1,10 @@
 let params = (new URL(document.location)).searchParams;
 let redirect = (params) ? params.get("r") : null;
 
+function showSignup() {
+    document.querySelector('#myDIV').classList.remove('hiddenEl');
+}
+
 const loginForm = async (event) => {
     event.preventDefault();
     console.log("test");

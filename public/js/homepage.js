@@ -9,7 +9,7 @@ matchBtn.addEventListener('click', async () => {
     if (response.err) {
         document.location.replace('/login');
     }
-    linkDisplay.innerHTML = `Send someone this link to play with them! \n<span id='url'>${window.location.href}match/${response.url}</span>`;
+    linkDisplay.innerHTML = `Send someone this link to play with them!<br><span id='url'>${window.location.href}match/${response.url}</span><br>Just click to copy it!`;
     linkDisplay.classList.remove('hiddenEl');
     let urlEl = document.querySelector('#url');
     socket.emit("homepageCreation", response.url);

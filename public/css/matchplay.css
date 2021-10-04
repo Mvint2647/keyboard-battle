@@ -169,6 +169,10 @@ body {
 .correct {
   color: rgb(0, 185, 0);
 }
+
+.incorrect {
+  color: rgb(224, 60, 60);
+}
 .container {
   background-color: #0000004f;
   box-shadow:rgb(1, 44, 54) 0px 0px 10px 10px;
