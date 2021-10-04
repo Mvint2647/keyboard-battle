@@ -26,6 +26,10 @@ router.get('/logout',(req, res) => {
     res.redirect('../');
 })
 
+router.get('/profile',(req, res) => {
+    res.render('profile', )
+})
+
 //match directories
 router.get('/match',(req, res) => {
     res.redirect('../');
