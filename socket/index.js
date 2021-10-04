@@ -1,6 +1,6 @@
 const socket = require('socket.io');
 const sharedsession = require("express-socket.io-session");
-const { Match, Text } = require('../models');
+const { Match, Player } = require('../models');
 const { getRandomWord, toNormalCase } = require('../utils');
 var io;
 //the game logic will be programmed here for now, may eventually be modularized
@@ -15,12 +15,18 @@ const matchJoin = async (data, socket) => {
             queryID: data
         }
     });
+    const currentPlayer = await Player.findOne({
+        where: {
+            id: currentSession.playerID
+        }
+    })
     //start tracking the match if we aren't already
     if (!matches[requestedMatch.queryID]) {
         matches[requestedMatch.queryID] = {
             p1: {
                 id: null, //player id, aligns with primary key of players table
                 sid: null, //socket.id, the id of the socket theyre connecting with
+                name: null,
                 score: 0, //their score
                 ready: false, //have they readied up?
                 typed: "" //what have they typed?
@@ -28,6 +34,7 @@ const matchJoin = async (data, socket) => {
             p2: {
                 id: null,
                 sid: null,
+                name: null,
                 score: 0,
                 ready: false,
                 typed: ""
@@ -42,14 +49,18 @@ const matchJoin = async (data, socket) => {
     if (currentSession.playerID == requestedMatch.player1_id){
         currentMatch.p1.sid = socket.id;
         currentMatch.p1.id = currentSession.playerID;
+        currentMatch.p1.name = currentPlayer.name;
         socket.join(requestedMatch.queryID);
         socket.emit('matchCreated', 0); //tell the client the match is ready and tell them which player they are so they can interperet the score later
         console.log("player 1 is here");
     } else if (!requestedMatch.player2_id || currentSession.playerID == requestedMatch.player2_id) {
         currentMatch.p2.sid = socket.id;
         currentMatch.p2.id = currentSession.playerID;
+        currentMatch.p2.name = currentPlayer.name;
         socket.emit('matchCreated', 1);
+        socket.emit("setP2Name", currentMatch.p1.name);
         socket.join(requestedMatch.queryID);
+        socket.broadcast.to(requestedMatch.queryID).emit("setP2Name", currentPlayer.name);
         requestedMatch.player2_id = currentSession.playerID;
         await requestedMatch.save();
         console.log(`Player 2 has joined. Their id is ${currentSession.playerID}`);

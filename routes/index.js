@@ -2,7 +2,7 @@ const router = require('express').Router();
 const apiRoutes = require('./api');
 const testRoutes = require('./test')
 const path = require('path');
-const {Match} = require('../models');
+const {Match, Player } = require('../models');
 
 router.use('/api', apiRoutes);
 
@@ -20,18 +20,25 @@ router.get('/login',(req, res) => {
 
 //match directories
 router.get('/match',(req, res) => {
-    res.render('matchpage')
+    res.render('matchpage', )
 })
 
 router.get('/match/:matchID', async (req, res) => {
     if(req.session.loggedIn) {
         const matchID = req.params.matchID;
-        const requestedMatch = await Match.findAll({
+        const requestedMatch = await Match.findOne({
             where: {
                 queryID: matchID
             }
         })
-        res.render('matchpage');
+        if (requestedMatch) {
+            const player1 = await Player.findOne({
+                where: {
+                    id: req.session.playerID
+                }
+            })
+            res.render('matchpage', {Player1Name: player1.name, Player2Name: "???"});
+        }
     } else {
         res.redirect('../../');
     }

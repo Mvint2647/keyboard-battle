@@ -1,9 +1,8 @@
 const socket = io();
 
-console.log("WHY")
-
 const input = document.getElementById("p1Input");
 const p2TextDisplay = document.getElementById('p2Input');
+const p2NameDisplay = document.getElementById('p2Name');
 const textDisplayEl = document.getElementById('gameStateText');
 const myScoreDisplay = document.getElementById('p1Score');
 const p2ScoreDisplay = document.getElementById('p2Score');
@@ -42,11 +41,15 @@ socket.on('gameStart', (word) => {
     input.removeAttribute('disabled');
 });
 
+socket.on('setP2Name', (name) => {
+    p2NameDisplay.textContent = `${name}'s Score:'`
+})
+
 socket.on('matchCreated', (pid) => {
     myPID = pid;
     p2PID = (pid == 1) ? 0 : 1;
-    myScoreDisplay.textContent = `P1 Score: 0`;
-    p2ScoreDisplay.textContent = `P2 Score: 0`;
+    myScoreDisplay.textContent = `0`;
+    p2ScoreDisplay.textContent = `0`;
     socket.emit('ready', matchID);
 });
 
@@ -54,8 +57,8 @@ socket.on('newWord', ({word, score}) => {
     textDisplayEl.textContent = word;
     targetWord = word;
     console.log(targetWord);
-    myScoreDisplay.textContent = `P1 Score: ${score[myPID]}`;
-    p2ScoreDisplay.textContent = `P2 Score: ${score[p2PID]}`;
+    myScoreDisplay.textContent = `${score[myPID]}`;
+    p2ScoreDisplay.textContent = `${score[p2PID]}`;
     input.value = "";
     p2TextDisplay.value = "";
 });

@@ -36,8 +36,8 @@
     <div class="quote-displayone" id="quoteDisplayone"></div>
     <input type="text" id="p1Input" class="quote-input"></input>
  </div>
-<div class="player1" id=""> PLAYER 1</div>
-<div class="score2" id="p1Score"> P1 Score</div>
+<div class="player1" id="">{{Player1Name}}'s Score:</div>
+<div class="score2" id="p1Score">0</div>
 </div>
 
 
@@ -46,8 +46,8 @@
   <div class="quote-displaytwo" id="quoteDisplaytwo"></div>
     <input type="text" disabled="true" id="p2Input" class="quote-input"></input>
  </div>
-<div class="player1"> PLAYER 2</div>
-<div class="score1" id="p2Score"> P2 Score</div>
+<div class="player1" id="p2Name">{{Player2Name}}</div>
+<div class="score1" id="p2Score"></div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
