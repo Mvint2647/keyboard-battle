@@ -20,8 +20,8 @@
   </div>
 </div>
 </header>
-
-{{!-- <body>
+<body>
+{{!-- 
  <div class="container">
     <div class="page-header">
         <div class="header">
@@ -56,46 +56,45 @@
 <div class="container">
   <div class="center">
       
-      <button type="button" class="btn btn-dark btn-block">Click here to start</button>
-    <button type="button" id= "btnsubmit" class="btn btn-warning btn-lg btn-block">Waiting for opponent</button>
-
-<body>
-    <div id="div1" class="fa"></div>
+      <button type="button" class="btn btn-dark btn-block startBtn">Click here to start</button>
+    <div class="status hiddenEl">Waiting for opponent</div>
 
 
+    <div id="div1" class="fa hrGlass hiddenEl"></div>
+  </div>
+</div>
 
 <script>
 
 
-{{!-- How to hide an element/getElementById --}}
+  function hourglass() {
+    var a = document.getElementById("div1");
+    a.innerHTML = "&#xf251;";
+    setTimeout(function () {
+        a.innerHTML = "&#xf252;";
+      }, 1000);
+    setTimeout(function () {
+        a.innerHTML = "&#xf253;";
+      }, 2000);
+  }
+  hourglass();
+  setInterval(hourglass, 3000);
 
-function hourglass() {
-  var a;
-  a = document.getElementById("div1");
-  a.innerHTML = "&#xf251;";
-  setTimeout(function () {
-      a.innerHTML = "&#xf252;";
-    }, 1000);
-  setTimeout(function () {
-      a.innerHTML = "&#xf253;";
-    }, 2000);
-}
-hourglass();
-setInterval(hourglass, 3000);
+  function start(){
+    let status = document.querySelector('.status');
+    status.classList.remove('hiddenEl');
 
-{{!-- 
-function show_hide(btnsubmithide, btnsubmitshow)
-        {
-            document.getElementById(btnsubmit).style.visibility='hidden';
-            document.getElementById(btnsubmit.style.visibility='visible'; --}}
-        
+    let hrGlass = document.querySelector('.hrGlass');
+    hrGlass.classList.remove('hiddenEl');
+  }
+  let startBtn = document.querySelector('.startBtn');
+  startBtn.addEventListener('click',start);
+  
 </script>
-</div>
-</div>
-</body>
 <footer>
     
-<h2>The FINISH LINE AWAITS!</h2>
-   </footer>
+  <h2>The FINISH LINE AWAITS!</h2>
+</footer>
+</body>
 </html>
 
