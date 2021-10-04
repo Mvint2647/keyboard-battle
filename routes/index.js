@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const apiRoutes = require('./api');
-const testRoutes = require('./test')
 const path = require('path');
 const { createQueryID } = require('../utils');
 const {Match, Player } = require('../models');
@@ -67,8 +66,5 @@ router.get('/match/:matchID', async (req, res) => {
         res.redirect(`../../login?r=${req.params.matchID}`);
     }
 });
-
-//the following are testing routes. just let me know if you wanna delete them -lily.
-router.use('/test', testRoutes);
 
 module.exports = router;
