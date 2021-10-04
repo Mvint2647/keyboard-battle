@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const apiRoutes = require('./api');
-const testRoutes = require('./test')
 const path = require('path');
 const { createQueryID } = require('../utils');
 const {Match, Player } = require('../models');
