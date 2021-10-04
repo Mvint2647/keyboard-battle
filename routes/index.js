@@ -27,10 +27,15 @@ router.get('/logout',(req, res) => {
     });
 })
 
+router.get('/profile',(req, res) => {
+    res.render('profile', )
+})
+
 //match directories
 router.get('/match',(req, res) => {
     res.render('matchpage', )
 })
+
 
 router.get('/match/:matchID', async (req, res) => {
     if(req.session.loggedIn) {
