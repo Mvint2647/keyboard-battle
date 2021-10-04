@@ -14,6 +14,7 @@
 </head>
 
 <body>
+{{!--------------title art-----------}}
     <h1>
         <div class="words word-1">
             <span>K</span>
@@ -52,10 +53,11 @@
         <div class="bubble bubble--12"></div>
     </div>
 
+{{!--------------login and signup-------------- --}}
 <article class="columnall">
-
-    <form class="columnall" id="login">
-        <div class="columnone">
+    <form class="row" id="login">
+        <div class="column">
+         <div class="columnone">
             <h2>Login</h2>
             <label>Username:</label>
             <input class="logininput" type="text" name="username" id="username-login" />
@@ -66,22 +68,19 @@
             <div>
                 <input class="btn btn-primary" type="submit" value="ENTER HERE" />
             </div>
-        </div>
+            </div>
+            </div>
     </form>
 
-
-    <div class="columnall"></div>
-    <div class="columntwo">
-        <h2>OR</h2>
-    </div>
-
-
-    <form class="columnall" id="signup">
+    <div class="row"></div>
+    <div class="column"></div>
+    <div class="columntwo"></div>
+ 
+    <form class="row" id="signup">
         <div class="columnthree">
-            <h2>Sign Up</h2>
+            <h3>Sign Up</h3>
             <label>Username:</label>
             <input class="logininput" type="text" name="username" id="username-signup" />
-
             <div>
                 <label>Email:</label>
                 <input class="logininput" type="email" name="email" id="email-signup" />
@@ -89,13 +88,15 @@
             <div>
                 <label>Password:</label>
                 <input class="logininput" type="password" name="password" id="password-signup" />
-
             </div>
             <div>
-                <input class="btn btn-primary" type="submit" value="Submit" />
+                <input class="btn btn-primary" type="Sign Up!" value="Sign Up!" />
             </div>
         </div>
     </form>
+  </article>
+  
+  
     <script src="/js/login.js"></script>
 </body>
 
