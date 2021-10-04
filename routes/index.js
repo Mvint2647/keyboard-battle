@@ -10,9 +10,11 @@ router.get('/',(req, res) => {
     res.render('homepage', {loggedIn: req.session.loggedIn})
 
 })
+
 router.get('/login',(req, res) => {
+    let r = req.query.r;
     if (req.session.loggedIn){
-        res.redirect('../');
+        res.redirect((r) ? `../match/${r}`: '../');
     }
     res.render('login')
 })
@@ -45,7 +47,7 @@ router.get('/match/:matchID', async (req, res) => {
             res.render('matchpage', {Player1Name: player1.name, Player2Name: "???"});
         }
     } else {
-        res.redirect(`../../login/${req.params.matchID}`);
+        res.redirect(`../../login?r=${req.params.matchID}`);
     }
 });
 
