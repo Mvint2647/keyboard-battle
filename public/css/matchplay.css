@@ -11,7 +11,6 @@ body,
   margin: 0;
   padding: 0;
 }
-
 body {
   background: linear-gradient(rgb(4, 43, 58), black);
   position: relative;
@@ -181,7 +180,6 @@ body {
   box-shadow:  rgb(1, 44, 54) 0px 1px 2px 2px;
   padding: 1rem;
   margin: 0px 0px 30px 10px;
-
   width: 400px;
   max-width: 90%;
 }
