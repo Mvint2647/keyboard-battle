@@ -1,7 +1,7 @@
 const socket = require('socket.io');
 const sharedsession = require("express-socket.io-session");
 const { Match, Player } = require('../models');
-const { getRandomWord, toNormalCase } = require('../utils');
+const { getRandomWord, createQueryID } = require('../utils');
 var io;
 //the game logic will be programmed here for now, may eventually be modularized
 var matches = {} //matches will keep track of queryIDs and the socketids of each player 
@@ -87,6 +87,8 @@ const playerReady = (queryID, socket) => {
         p2.ready = (socket.id == p2.sid) ? true : p2.ready;
         console.log('mega recieved\n' + p1.ready + p2.ready);
         if (p1.ready && p2.ready) {
+            p1.ready = false; //setting these values to false to use them later as a ready for rematch indicator
+            p2.ready = false; 
             startMatch(queryID);
         }
     }
@@ -105,7 +107,35 @@ const newWord = (queryID, socket) => {
 }
 
 const endMatch = (queryID, socket) => {
+    Match.destroy({
+        where: {
+          queryID: queryID,
+        },
+    });
     let currentMatch = matches[queryID];
+    currentMatch.gameState = "finished";
+    let { p1, p2 } = currentMatch;
+    let currentPlayer = (socket.id == p1.sid) ? p1 : p2;
+    io.to(queryID).emit("gameOver", {winner: currentPlayer.name, score: [currentMatch.p1.score, currentMatch.p2.score]});
+}
+
+const rematch = async (queryID, socket) => {
+    if (matches[queryID]) {
+        let currentMatch = matches[queryID];
+        if (currentMatch.gameState == "finished") {
+            let { p1, p2 } = currentMatch;
+            p1.ready = (socket.id == p1.sid) ? true : p1.ready;
+            p2.ready = (socket.id == p2.sid) ? true : p2.ready;
+            if (p1.ready && p2.ready) {
+                const newMatch = await Match.create({
+                    queryID: createQueryID(),
+                    player1_id: p1.id,
+                    player2_id: p2.id
+                });
+                io.to(queryID).emit("rematch", newMatch.queryID);
+            }
+        }
+    }
 }
 
 const inputHandler = (socket, { text, queryID }) => {
@@ -118,7 +148,7 @@ const inputHandler = (socket, { text, queryID }) => {
             console.log(currentPlayer.typed + " : " + currentWord);
             if (currentPlayer.typed == currentWord) {
                 currentPlayer.score += 1;
-                if (currentPlayer.score > currentMatch.maxScore) { //the win
+                if (currentPlayer.score >= currentMatch.maxScore) { //the win
                     endMatch(queryID, socket);
                 }else {
                     newWord(queryID, socket);
@@ -142,6 +172,8 @@ const connection = (socket) => {
     socket.on('matchJoin', async (data) => matchJoin(data, socket));
 
     socket.on('ready', (data) => playerReady(data, socket));
+
+    socket.on('rematch', (data) => rematch(data, socket));
 
     socket.on('type', (data) => inputHandler(socket, data));
 };
