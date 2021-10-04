@@ -33,6 +33,10 @@
   color: white;
 }
 
+.hiddenEl {
+  display: none;
+}
+
 html,
 body,
 .wrapper {
