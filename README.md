@@ -16,7 +16,7 @@
 
 Languages: Node.js, SQL Database, Socket I.O, Express.js Handlebars.
 
-Framework: [Pure CSS](https://purecss.io & Bootstrap)
+Framework: [purecss.io & Bootstrap]
 
 
 ## Video
