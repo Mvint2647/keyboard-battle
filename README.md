@@ -19,9 +19,8 @@ Languages: Node.js, SQL Database, Socket I.O, Express.js Handlebars.
 Framework: [Pure CSS](https://purecss.io & Bootstrap)
 
 
-## ScreenShots
-![Keyboard Battles](ss67.png)
-![Keyboard Battles](KeyboardBattle.gif)
+## Video
+![https://drive.google.com/file/d/1qYlutXOgo7Nk_0QaOwqp-q4UxHJ5kI5j/view]
 
 ## Collaborators: 
 
