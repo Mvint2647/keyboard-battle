@@ -20,7 +20,7 @@ Framework: [Pure CSS](https://purecss.io & Bootstrap)
 
 
 ## Video
-![https://watch.screencastify.com/v/PYJKaAUN3gWLb35YhBqA]
+(https://watch.screencastify.com/v/PYJKaAUN3gWLb35YhBqA)
 
 ## Collaborators: 
 
