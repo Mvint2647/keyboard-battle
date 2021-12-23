@@ -1,6 +1,5 @@
 # keyboard-battle
 
-
 ## Work on your typing skills by battling an opponent!
 
 ## How It Works: An online game where two players compete to type a given word FIRST. It will use user accounts to keep track of Wins and Losses. Also, players can CHALLENGE each other!
@@ -19,6 +18,10 @@ Languages: Node.js, SQL Database, Socket I.O, Express.js Handlebars.
 
 Framework: [Pure CSS](https://purecss.io & Bootstrap)
 
+
+## ScreenShots
+![Keyboard Battles](ss67.png)
+![Keyboard Battles](KeyboardBattle.gif)
 
 ## Collaborators: 
 
