@@ -19,10 +19,9 @@ Languages: Node.js, SQL Database, Socket I.O, Express.js Handlebars.
 Framework: [Pure CSS](https://purecss.io & Bootstrap)
 
 
-## Screenshots
-![Quick Fix Recipe Homepage](./assets/images/)
-![Search Results Page Demo](./assets/images/)
-![My Recipes Page Demo](./assets/images/)
+## ScreenShots
+![Keyboard Battles](ss67.png)
+![Keyboard Battles](KeyboardBattle.gif)
 
 ## Collaborators: 
 
